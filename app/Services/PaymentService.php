@@ -22,7 +22,6 @@ class PaymentService
         if (!isset($this->gateways[$gateway])) {
             throw new Exception("Payment '{$gateway}' is not supported.");
         }
-
         return new $this->gateways[$gateway]();
     }
 
@@ -35,9 +34,7 @@ class PaymentService
         }
 
         $gateway = $this->getGateway($gatewayName);
-
         $result = $gateway->processPayment($order, $paymentData);
-
 
         $payment = Payment::create([
             'order_id' => $order->id,
@@ -50,7 +47,6 @@ class PaymentService
             $order->status = Order::STATUS_CONFIRMED;
             $order->save();
         }
-
 
         return ['payment' => $payment, 'result' => $result];
     }

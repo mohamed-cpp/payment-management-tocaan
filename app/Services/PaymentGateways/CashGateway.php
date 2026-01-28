@@ -11,7 +11,6 @@ class CashGateway implements PaymentGatewayInterface
 
     public function processPayment(Order $order, array $paymentData): array
     {
-
         $transactionId = 'CASH-' . time() . '-' . $order->id;
         return [
             'success' => true,
