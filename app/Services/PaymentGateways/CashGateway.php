@@ -13,7 +13,6 @@ class CashGateway implements PaymentGatewayInterface
     {
 
         $transactionId = 'CASH-' . time() . '-' . $order->id;
-
         return [
             'success' => true,
             'status' => Payment::STATUS_SUCCESSFUL,
